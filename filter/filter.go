@@ -11,7 +11,7 @@ type Filter interface {
 	Process(srcPath, dstPath string) error
 }
 
-type Grayscale struct {}
+type Grayscale struct{}
 
 func (g Grayscale) Process(srcPath, dstPath string) error {
 	src, err := imaging.Open(srcPath)
@@ -35,7 +35,7 @@ func (g Grayscale) Process(srcPath, dstPath string) error {
 	return jpeg.Encode(dstFile, dst, &opts)
 }
 
-type Blur struct {}
+type Blur struct{}
 
 func (b Blur) Process(srcPath, dstPath string) error {
 	src, err := imaging.Open(srcPath)
