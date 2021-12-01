@@ -1,12 +1,16 @@
 package main
 
 import (
-	"fmt"
+	"imgproc/filter"
 	"imgproc/task"
 )
 
 func main() {
-	f := task.BuildFileList("./img")
+	var f filter.Filter = filter.Grayscale{}
+	t := task.NewWaitGrpTask("./img", "output", f)
+	err := t.Process()
+	if err != nil {
+		return
+	}
 
-	fmt.Println(f)
 }
